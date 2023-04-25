@@ -1,11 +1,13 @@
 package com.lapitus.controller;
 
 import com.lapitus.config.TelegramBotConfig;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 @Component
+@Log4j
 public class TelegramBotController extends TelegramLongPollingBot {
 
     final TelegramBotConfig telegramBotConfig;
@@ -17,7 +19,7 @@ public class TelegramBotController extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         var originalMessage = update.getMessage();
-        System.out.println(originalMessage.getText());
+        log.info(originalMessage.getText());
     }
 
     @Override
